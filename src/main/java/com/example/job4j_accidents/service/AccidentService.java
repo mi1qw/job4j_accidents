@@ -7,6 +7,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @AllArgsConstructor
@@ -20,5 +21,13 @@ public class AccidentService {
 
     public void create(final Accident accident) {
         accidentMem.create(accident);
+    }
+
+    public void update(final Accident accident) {
+        accidentMem.update(accident);
+    }
+
+    public Optional<Accident> findById(final int id) {
+        return accidentMem.findById(id);
     }
 }

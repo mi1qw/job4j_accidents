@@ -6,6 +6,7 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.concurrent.ConcurrentHashMap;
 
 @Repository
@@ -37,6 +38,14 @@ public class AccidentMem {
     public void create(final Accident accident) {
         accident.setId(makeId());
         accidents.put(accident.getId(), accident);
+    }
+
+    public void update(final Accident accident) {
+        accidents.put(accident.getId(), accident);
+    }
+
+    public Optional<Accident> findById(final int id) {
+        return Optional.of(accidents.get(id));
     }
 
     private synchronized int makeId() {
