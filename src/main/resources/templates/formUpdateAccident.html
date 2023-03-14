@@ -47,6 +47,15 @@
                         <label for="address">Адрес</label>
                         <input type="text" class="form-control" name="address" id="address"
                                th:field="*{address}">
+                        <label for="type.id">Type</label>
+                        <select class="form-control" id="type.id" name="type.id">
+                            <option selected th:value="*{type.id}"
+                                    th:text="*{type.name}"></option>
+                            <option th:each="typ: ${types}"
+                                    th:if="${typ.id} != *{type.id}"
+                                    th:text="${typ.name}"
+                                    th:value="${typ.id}"></option>
+                        </select>
                     </div>
                     <button type="submit" class="btn btn-primary">Сохранить</button>
                 </form>

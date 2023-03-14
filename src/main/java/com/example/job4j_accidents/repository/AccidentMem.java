@@ -1,6 +1,7 @@
 package com.example.job4j_accidents.repository;
 
 import com.example.job4j_accidents.model.Accident;
+import com.example.job4j_accidents.model.AccidentType;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Repository;
 
@@ -22,18 +23,21 @@ public class AccidentMem {
                 "Парковка транспортных средств на местах, "
                         + "предназначенных для бесплатной парковки "
                         + "транспортных средств, лицами, которые не имеют"
-                        + " соответствующих льгот", "ул.Васина д1"));
+                        + " соответствующих льгот", "ул.Васина д1",
+                new AccidentType(2, "Машина и человек")));
         id = this.id.getAndIncrement();
         accidents.put(id, new Accident(id, "Нурушение парковки",
                 "Парковка транспортных средств на местах,  "
                         + "предназначенных для бесплатной парковки "
                         + "транспортных средств, лицами, которые не имеют"
-                        + " соответствующих льгот", "ул.Анны д1"));
+                        + " соответствующих льгот", "ул.Анны д1",
+                new AccidentType(2, "Машина и человек")));
         id = this.id.getAndIncrement();
         accidents.put(id, new Accident(id, "Нарушение перезда перекрёстка",
                 "Не уступил дорогу транспортным средствам, приближающимся по "
                         + "главной дороге",
-                "ул.Петра д1"));
+                "ул.Петра д1",
+                new AccidentType(1, "Две машины")));
     }
 
     public List<Accident> allAccidents() {
