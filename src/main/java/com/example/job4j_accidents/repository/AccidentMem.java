@@ -33,5 +33,18 @@ public class AccidentMem {
     public List<Accident> allAccidents() {
         return accidents.values().stream().toList();
     }
+
+    public void create(final Accident accident) {
+        accident.setId(makeId());
+        accidents.put(accident.getId(), accident);
+    }
+
+    private synchronized int makeId() {
+        int id = accidents.size() + 1;
+        while (accidents.containsKey(id)) {
+            id++;
+        }
+        return id;
+    }
 }
 
