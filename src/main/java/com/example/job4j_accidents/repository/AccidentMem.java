@@ -2,12 +2,14 @@ package com.example.job4j_accidents.repository;
 
 import com.example.job4j_accidents.model.Accident;
 import com.example.job4j_accidents.model.AccidentType;
+import com.example.job4j_accidents.model.Rule;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -24,20 +26,24 @@ public class AccidentMem {
                         + "предназначенных для бесплатной парковки "
                         + "транспортных средств, лицами, которые не имеют"
                         + " соответствующих льгот", "ул.Васина д1",
-                new AccidentType(2, "Машина и человек")));
+                new AccidentType(2, "Машина и человек"),
+                Set.of(new Rule(1, "Статья. 1"))));
         id = this.id.getAndIncrement();
         accidents.put(id, new Accident(id, "Нурушение парковки",
                 "Парковка транспортных средств на местах,  "
                         + "предназначенных для бесплатной парковки "
                         + "транспортных средств, лицами, которые не имеют"
                         + " соответствующих льгот", "ул.Анны д1",
-                new AccidentType(2, "Машина и человек")));
+                new AccidentType(2, "Машина и человек"),
+                Set.of(new Rule(1, "Статья. 1"))));
         id = this.id.getAndIncrement();
         accidents.put(id, new Accident(id, "Нарушение перезда перекрёстка",
                 "Не уступил дорогу транспортным средствам, приближающимся по "
                         + "главной дороге",
                 "ул.Петра д1",
-                new AccidentType(1, "Две машины")));
+                new AccidentType(1, "Две машины"),
+                Set.of(new Rule(1, "Статья. 1"),
+                        new Rule(2, "Статья. 2"))));
     }
 
     public List<Accident> allAccidents() {

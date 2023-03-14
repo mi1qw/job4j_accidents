@@ -54,8 +54,23 @@
                             <option th:each="typ: ${types}"
                                     th:if="${typ.id} != *{type.id}"
                                     th:text="${typ.name}"
-                                    th:value="${typ.id}"></option>
+                                    th:value="${typ.id}"/>
                         </select>
+
+                        <div class="pt-3" style="width: 24rem">
+                            <label for="rIds">Статья</label>
+                            <select class="form-control" style="width: 30%" id="rIds" name="rIds"
+                                    multiple>
+                                <option selected th:each="rul: ${rulesAll}"
+                                        th:if="${#sets.contains(accident.rules, rul)}"
+                                        th:text="${rul.name}"
+                                        th:value="${rul.id}"/>
+                                <option th:each="rul: ${rulesAll}"
+                                        th:if="${!#sets.contains(accident.rules, rul)}"
+                                        th:text="${rul.name}"
+                                        th:value="${rul.id}"/>
+                            </select>
+                        </div>
                     </div>
                     <button type="submit" class="btn btn-primary">Сохранить</button>
                 </form>

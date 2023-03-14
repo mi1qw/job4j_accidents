@@ -42,6 +42,7 @@
                 <th scope="col">Действия</th>
                 <th scope="col">Адресс</th>
                 <th scope="col">Тип</th>
+                <th scope="col">Rule</th>
             </tr>
             </thead>
             <tbody>
@@ -56,6 +57,10 @@
                 <td th:text="${accident.getText()}"/>
                 <td th:text="${accident.getAddress()}"/>
                 <td th:text="${accident.getType().name}"/>
+                <td>
+                <span th:each="rule: ${accident?.getRules()}"
+                      th:text="${rule?.name} + ' '"></span>
+                </td>
             </tr>
             </tbody>
         </table>

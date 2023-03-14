@@ -12,7 +12,7 @@ import java.util.List;
 public class AccidentTypeService {
     private final AccidentTypeMem accidentTypeMem;
 
-    public List<AccidentType> allAccidentTypes() {
+    public List<AccidentType> findAll() {
         return accidentTypeMem.findAll();
     }
 
