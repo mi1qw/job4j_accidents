@@ -9,7 +9,7 @@ import java.util.Set;
 
 @Service
 @AllArgsConstructor
-public class RulesService {
+public class RuleService {
     private final RulesMem rulesMem;
 
     public Set<Rule> findAll() {
