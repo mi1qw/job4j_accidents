@@ -4,7 +4,6 @@ import com.example.job4j_accidents.model.Accident;
 import com.example.job4j_accidents.model.Rule;
 import com.example.job4j_accidents.repository.AccidentMem;
 import lombok.AllArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -14,10 +13,9 @@ import java.util.stream.Collectors;
 
 @Service
 @AllArgsConstructor
-@Slf4j
 public class AccidentService {
     private final RuleService ruleService;
-    private final AccidentTypeService types;
+    private final AccidentTypeService typeService;
     private final AccidentMem accidentMem;
 
     public List<Accident> allAccidents() {
@@ -45,7 +43,7 @@ public class AccidentService {
     private Accident makeAccident(final Accident accident,
                                   final int typeId,
                                   final List<Integer> rIds) {
-        accident.setType(types.findById(typeId));
+        accident.setType(typeService.findById(typeId));
         Set<Rule> accidentRules = rIds.stream()
                 .map(ruleService::findById)
                 .collect(Collectors.toSet());
