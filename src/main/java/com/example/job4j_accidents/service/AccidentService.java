@@ -2,6 +2,7 @@ package com.example.job4j_accidents.service;
 
 import com.example.job4j_accidents.model.Accident;
 import com.example.job4j_accidents.model.Rule;
+import com.example.job4j_accidents.repository.AccidentJdbcTemplate;
 import com.example.job4j_accidents.repository.AccidentMem;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -17,27 +18,28 @@ public class AccidentService {
     private final RuleService ruleService;
     private final AccidentTypeService typeService;
     private final AccidentMem accidentMem;
+    private final AccidentJdbcTemplate jdbcTemplate;
 
     public List<Accident> allAccidents() {
-        return accidentMem.allAccidents();
+        return jdbcTemplate.getAll();
     }
 
     public void create(final Accident accident,
                        final int typeId,
                        final List<Integer> rIds) {
         Accident acdnt = makeAccident(accident, typeId, rIds);
-        accidentMem.create(acdnt);
+        jdbcTemplate.save(acdnt);
     }
 
     public void update(final Accident accident,
                        final int typeId,
                        final List<Integer> rIds) {
         Accident acdnt = makeAccident(accident, typeId, rIds);
-        accidentMem.update(acdnt);
+        jdbcTemplate.update(acdnt);
     }
 
     public Optional<Accident> findById(final int id) {
-        return accidentMem.findById(id);
+        return jdbcTemplate.findById(id);
     }
 
     private Accident makeAccident(final Accident accident,
