@@ -1,7 +1,7 @@
 package com.example.job4j_accidents.service;
 
 import com.example.job4j_accidents.model.AccidentType;
-import com.example.job4j_accidents.repository.TypeJdbcTemplate;
+import com.example.job4j_accidents.repository.hibernate.TypeHibernate;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -11,15 +11,15 @@ import java.util.concurrent.ConcurrentHashMap;
 @Service
 public class AccidentTypeService {
     private final Map<Integer, AccidentType> types = new ConcurrentHashMap<>();
-    private final TypeJdbcTemplate typeJdbc;
+    private final TypeHibernate typeHibernate;
 
-    public AccidentTypeService(final TypeJdbcTemplate typeJdbc) {
-        this.typeJdbc = typeJdbc;
+    public AccidentTypeService(final TypeHibernate typeHibernate) {
+        this.typeHibernate = typeHibernate;
         init();
     }
 
     private void init() {
-        typeJdbc.findAll()
+        typeHibernate.findAll()
                 .forEach(type -> types.put(type.getId(), type));
     }
 

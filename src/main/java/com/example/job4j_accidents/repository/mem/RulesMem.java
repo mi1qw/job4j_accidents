@@ -1,4 +1,4 @@
-package com.example.job4j_accidents.repository;
+package com.example.job4j_accidents.repository.mem;
 
 import com.example.job4j_accidents.model.Rule;
 import org.springframework.stereotype.Repository;

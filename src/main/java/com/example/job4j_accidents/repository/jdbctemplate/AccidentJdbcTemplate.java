@@ -1,4 +1,4 @@
-package com.example.job4j_accidents.repository;
+package com.example.job4j_accidents.repository.jdbctemplate;
 
 import com.example.job4j_accidents.model.Accident;
 import com.example.job4j_accidents.service.AccidentTypeService;

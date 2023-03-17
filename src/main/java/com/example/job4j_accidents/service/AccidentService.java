@@ -2,8 +2,9 @@ package com.example.job4j_accidents.service;
 
 import com.example.job4j_accidents.model.Accident;
 import com.example.job4j_accidents.model.Rule;
-import com.example.job4j_accidents.repository.AccidentJdbcTemplate;
-import com.example.job4j_accidents.repository.AccidentMem;
+import com.example.job4j_accidents.repository.hibernate.AccidentHibernate;
+import com.example.job4j_accidents.repository.jdbctemplate.AccidentJdbcTemplate;
+import com.example.job4j_accidents.repository.mem.AccidentMem;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -18,28 +19,29 @@ public class AccidentService {
     private final RuleService ruleService;
     private final AccidentTypeService typeService;
     private final AccidentMem accidentMem;
+    private final AccidentHibernate accidentHibernate;
     private final AccidentJdbcTemplate jdbcTemplate;
 
     public List<Accident> allAccidents() {
-        return jdbcTemplate.getAll();
+        return accidentHibernate.getAll();
     }
 
     public void create(final Accident accident,
                        final int typeId,
                        final List<Integer> rIds) {
         Accident acdnt = makeAccident(accident, typeId, rIds);
-        jdbcTemplate.save(acdnt);
+        accidentHibernate.save(acdnt);
     }
 
     public void update(final Accident accident,
                        final int typeId,
                        final List<Integer> rIds) {
         Accident acdnt = makeAccident(accident, typeId, rIds);
-        jdbcTemplate.update(acdnt);
+        accidentHibernate.update(acdnt);
     }
 
     public Optional<Accident> findById(final int id) {
-        return jdbcTemplate.findById(id);
+        return accidentHibernate.findById(id);
     }
 
     private Accident makeAccident(final Accident accident,
