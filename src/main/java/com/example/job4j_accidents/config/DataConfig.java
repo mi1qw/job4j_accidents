@@ -12,6 +12,7 @@ import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import javax.sql.DataSource;
+import java.util.Properties;
 
 @Configuration
 @EnableJpaRepositories("com.example.job4j_accidents.repository")
@@ -28,6 +29,9 @@ public class DataConfig {
         factory.setJpaVendorAdapter(vendorAdapter);
         factory.setPackagesToScan("com.example.job4j_accidents");
         factory.setDataSource(ds);
+        Properties jpaProperties = new Properties();
+        jpaProperties.put("hibernate.format_sql", true);
+        factory.setJpaProperties(jpaProperties);
         return factory;
     }
 
