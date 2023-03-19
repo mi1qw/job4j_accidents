@@ -1,7 +1,7 @@
 package com.example.job4j_accidents.service;
 
 import com.example.job4j_accidents.model.Rule;
-import com.example.job4j_accidents.repository.hibernate.RulesHibernate;
+import com.example.job4j_accidents.repository.springdata.RuleRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -11,15 +11,15 @@ import java.util.concurrent.ConcurrentHashMap;
 @Service
 public class RuleService {
     private final Map<Integer, Rule> rules = new ConcurrentHashMap<>();
-    private final RulesHibernate rulesHibernate;
+    private final RuleRepository ruleRepository;
 
-    public RuleService(final RulesHibernate rulesHibernate) {
-        this.rulesHibernate = rulesHibernate;
+    public RuleService(final RuleRepository ruleRepository) {
+        this.ruleRepository = ruleRepository;
         init();
     }
 
     private void init() {
-        rulesHibernate.findAll()
+        ruleRepository.findAll()
                 .forEach(rule -> rules.put(rule.getId(), rule));
     }
 
