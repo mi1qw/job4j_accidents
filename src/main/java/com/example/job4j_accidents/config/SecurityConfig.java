@@ -26,7 +26,7 @@ public class SecurityConfig {
         http.authorizeHttpRequests(authz -> {
                     try {
                         authz
-                                .requestMatchers("/login")
+                                .requestMatchers("/login", "/reg")
                                 .permitAll()
                                 .requestMatchers("/**")
                                 .hasAnyRole("USER", "ADMIN")
@@ -57,7 +57,9 @@ public class SecurityConfig {
         manager.setUsersByUsernameQuery(
                 "select username, password, enabled from users where username = ?");
         manager.setAuthoritiesByUsernameQuery(
-                "select username, authority from authorities where username = ?");
+                " select u.username, a.authority "
+                        + "from authorities as a, users as u "
+                        + "where u.username = ? and u.authority_id = a.id");
         return manager;
     }
 
