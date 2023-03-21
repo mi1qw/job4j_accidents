@@ -5,12 +5,12 @@ import lombok.*;
 
 import java.util.Set;
 
-/*@NamedEntityGraph(
+@NamedEntityGraph(
         name = "AccidentTypeRules",
         attributeNodes = {
                 @NamedAttributeNode("type"),
                 @NamedAttributeNode("rules")
-        })*/
+        })
 @Data
 @Builder
 @AllArgsConstructor
