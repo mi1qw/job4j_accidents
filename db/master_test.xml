@@ -7,6 +7,7 @@
     <include file="scripts/002_dml_insert_accidents.sql" relativeToChangelogFile="true"/>
     <include file="scripts/004_ddl_create_security.sql" relativeToChangelogFile="true"/>
     <include file="scripts/005_dml_insert_users.sql" relativeToChangelogFile="true"/>
-    <include file="scripts/006_ddl_alter_security.sql" relativeToChangelogFile="true"/>
+    <include file="scripts/006_ddl_alter_security_test.sql" relativeToChangelogFile="true"/>
     <include file="scripts/007_dml_insert_security.sql" relativeToChangelogFile="true"/>
+    <include file="scripts/008_dml_alter_sequences_test.sql" relativeToChangelogFile="true"/>
 </databaseChangeLog>

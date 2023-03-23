@@ -3,7 +3,7 @@ alter table authorities add column id serial primary key;
 alter table authorities alter column authority set not null;
 alter table authorities add constraint auth_unique unique (authority);
 
-alter table users drop constraint users_pkey;
+alter table users drop primary key;
 alter table users add column id serial primary key;
 alter table users add constraint user_unique unique (username);
 alter table users add column authority_id int references authorities (id);
