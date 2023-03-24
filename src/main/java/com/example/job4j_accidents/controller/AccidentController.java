@@ -32,7 +32,7 @@ public class AccidentController {
     }
 
     @PostMapping("/saveAccident")
-    public String save(final @ModelAttribute Accident accident,
+    public String save(final @ModelAttribute("accident") Accident accident,
                        final @RequestParam("type.id") int typeId,
                        final @RequestParam("rIds") List<Integer> rIds) {
         accidentService.create(accident, typeId, rIds);
@@ -48,7 +48,7 @@ public class AccidentController {
     }
 
     @PostMapping("/updateAccident")
-    public String update(final @ModelAttribute Accident accident,
+    public String update(final @ModelAttribute("accident") Accident accident,
                          final @RequestParam(name = "type.id") int typeId,
                          final @RequestParam("rIds") List<Integer> rIds) {
         accidentService.update(accident, typeId, rIds);
